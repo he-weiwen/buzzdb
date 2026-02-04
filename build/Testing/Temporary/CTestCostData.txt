@@ -1,0 +1,13 @@
+common_test 14 9.14355e-05
+field_test 13 0.000100396
+tuple_test 13 0.000100974
+field_variant_test 12 0.000114264
+slotted_page_test 11 0.000119489
+storage_manager_test 11 0.000170036
+policy_test 10 0.000115984
+buffer_manager_test 12 0.0239614
+operator_test 9 0.000364267
+query_parser_test 8 0.000751451
+sql_parser_test 7 0.00033418
+integration_test 5 3.39448
+---

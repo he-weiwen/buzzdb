@@ -1,0 +1,672 @@
+Start testing: Feb 03 16:54 GMT
+----------------------------------------------------------
+1/12 Testing: common_test
+1/12 Test: common_test
+Command: "/home/whe302/db/buzzdb/build/common_test"
+Directory: /home/whe302/db/buzzdb/build
+"common_test" start time: Feb 03 16:54 GMT
+Output:
+----------------------------------------------------------
+=== Common Types Test ===
+Testing config constants...
+  PAGE_SIZE: 4096 bytes
+  MAX_SLOTS: 512
+  MAX_PAGES_IN_MEMORY: 10
+  Config constants OK
+Testing type aliases...
+  Type aliases OK
+Testing FieldType enum...
+  FieldType enum OK
+Testing RID struct...
+  RID struct OK
+=== All tests passed ===
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"common_test" end time: Feb 03 16:54 GMT
+"common_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/12 Testing: field_test
+2/12 Test: field_test
+Command: "/home/whe302/db/buzzdb/build/field_test"
+Directory: /home/whe302/db/buzzdb/build
+"field_test" start time: Feb 03 16:54 GMT
+Output:
+----------------------------------------------------------
+=== Field Tests ===
+Testing INT field construction...
+  INT field construction OK
+Testing FLOAT field construction...
+  FLOAT field construction OK
+Testing STRING field construction...
+  STRING field construction OK
+Testing copy construction...
+  Copy construction OK
+Testing move construction...
+  Move construction OK
+Testing copy assignment...
+  Copy assignment OK
+Testing move assignment...
+  Move assignment OK
+Testing comparison operators...
+  Comparison operators OK
+Testing arithmetic operators...
+  Arithmetic operators OK
+Testing serialization roundtrip...
+  Serialization roundtrip OK
+Testing clone()...
+  clone() OK
+=== All Field tests passed ===
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"field_test" end time: Feb 03 16:54 GMT
+"field_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/12 Testing: tuple_test
+3/12 Test: tuple_test
+Command: "/home/whe302/db/buzzdb/build/tuple_test"
+Directory: /home/whe302/db/buzzdb/build
+"tuple_test" start time: Feb 03 16:54 GMT
+Output:
+----------------------------------------------------------
+=== Tuple Tests ===
+Testing empty tuple...
+  Empty tuple OK
+Testing addField()...
+  addField() OK
+Testing getSize()...
+  getSize() OK
+Testing tuple copy construction...
+  Tuple copy construction OK
+Testing tuple copy assignment...
+  Tuple copy assignment OK
+Testing tuple move construction...
+  Tuple move construction OK
+Testing tuple move assignment...
+  Tuple move assignment OK
+Testing tuple clone()...
+  Tuple clone() OK
+Testing tuple serialization roundtrip...
+    Serialized: "3 0 4 42 1 4 3.14 2 13 noSpacesHere "
+  Tuple serialization roundtrip OK
+Testing serialization known limitation (spaces in strings)...
+    Serialized: "1 2 12 hello world "
+    Deserialized string: "hello"
+  (Known limitation demonstrated - strings with spaces don't roundtrip)
+Testing direct field access (public member)...
+  Direct field access OK (encapsulation concern noted)
+=== All Tuple tests passed ===
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"tuple_test" end time: Feb 03 16:54 GMT
+"tuple_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/12 Testing: field_variant_test
+4/12 Test: field_variant_test
+Command: "/home/whe302/db/buzzdb/build/field_variant_test"
+Directory: /home/whe302/db/buzzdb/build
+"field_variant_test" start time: Feb 03 16:54 GMT
+Output:
+----------------------------------------------------------
+=== Field (Variant) Tests ===
+
+--- Basic Functionality (unchanged) ---
+Testing construction...
+  Construction OK
+Testing copy/move...
+  Copy/move OK
+Testing asString() conversion...
+  asString() conversion OK
+Testing serialization (format unchanged)...
+    INT serialized: "0 4 12345 "
+    FLOAT serialized: "1 4 98.5 "
+    STRING serialized: "2 11 teststring "
+  Serialization roundtrip OK
+
+--- Semantic Changes (from original) ---
+Testing SEMANTIC CHANGE: accessor throws on wrong type...
+  CHANGE VERIFIED: asInt() on STRING throws (was UB)
+Testing SEMANTIC CHANGE: cross-type comparison ordering...
+  CHANGE VERIFIED: cross-type < uses type index ordering
+  CHANGE VERIFIED: no stderr output on cross-type comparison
+Testing SEMANTIC CHANGE: operator+= throws on type mismatch...
+  CHANGE VERIFIED: operator+= throws on type mismatch (was silent no-op)
+
+--- New Features ---
+Testing NEW FEATURE: tryAs*() safe accessors...
+  tryAs*() accessors OK
+Testing NEW FEATURE: tryAdd() safe arithmetic...
+  tryAdd() OK
+Testing NEW FEATURE: visit()...
+  visit() OK
+Testing NEW FEATURE: print(ostream&)...
+  print(ostream&) OK
+Testing NEW FEATURE: hash (unordered containers)...
+  Hash / unordered_set OK
+Testing NEW FEATURE: equalsSameType(), lessThanSameType()...
+  Same-type comparison OK
+Testing NEW FEATURE: getDataLength() compatibility...
+  getDataLength() OK
+
+=== All Field (Variant) tests passed ===
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"field_variant_test" end time: Feb 03 16:54 GMT
+"field_variant_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/12 Testing: slotted_page_test
+5/12 Test: slotted_page_test
+Command: "/home/whe302/db/buzzdb/build/slotted_page_test"
+Directory: /home/whe302/db/buzzdb/build
+"slotted_page_test" start time: Feb 03 16:54 GMT
+Output:
+----------------------------------------------------------
+=== SlottedPage Tests ===
+Testing empty page...
+  Empty page OK
+Testing add single tuple...
+  Add single tuple OK
+Testing add multiple tuples...
+  Add multiple tuples OK
+Testing delete tuple...
+  Delete tuple OK
+Testing page full behavior...
+    Added 113 tuples before page full
+  Page full behavior OK
+Testing tuple retrieval...
+  Tuple retrieval OK
+Testing invalid slot access...
+  Invalid slot access OK
+Testing print()...
+    Output: Slot 0 : [3072] :: 100 
+Slot 1 : [3082] :: 200 
+
+  print() OK
+Testing raw data access...
+  Raw data access OK
+=== All SlottedPage tests passed ===
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"slotted_page_test" end time: Feb 03 16:54 GMT
+"slotted_page_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/12 Testing: storage_manager_test
+6/12 Test: storage_manager_test
+Command: "/home/whe302/db/buzzdb/build/storage_manager_test"
+Directory: /home/whe302/db/buzzdb/build
+"storage_manager_test" start time: Feb 03 16:54 GMT
+Output:
+----------------------------------------------------------
+=== StorageManager Tests ===
+Testing create new database...
+    Initial pages: 1
+  Create new database OK
+Testing write and read page...
+  Write and read page OK
+Testing extend single page...
+  Extend single page OK
+Testing extend to specific page...
+  Extend to specific page OK
+Testing multiple page operations...
+  Multiple page operations OK
+Testing invalid page access...
+    Caught expected exception: Page ID 999 out of range (num_pages=1)
+  Invalid page access OK
+Testing persistence across reopen...
+  Persistence across reopen OK
+Testing truncate mode...
+  Truncate mode OK
+Testing non-truncate mode...
+  Non-truncate mode OK
+=== All StorageManager tests passed ===
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"storage_manager_test" end time: Feb 03 16:54 GMT
+"storage_manager_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/12 Testing: policy_test
+7/12 Test: policy_test
+Command: "/home/whe302/db/buzzdb/build/policy_test"
+Directory: /home/whe302/db/buzzdb/build
+"policy_test" start time: Feb 03 16:54 GMT
+Output:
+----------------------------------------------------------
+=== Policy Tests ===
+Testing LRU empty state...
+  LRU empty state OK
+Testing LRU basic touch...
+  LRU basic touch OK
+Testing LRU eviction order...
+  LRU eviction order OK
+Testing LRU remove...
+  LRU remove OK
+Testing 2Q empty state...
+  2Q empty state OK
+Testing 2Q first touch goes to FIFO...
+  2Q first touch goes to FIFO OK
+Testing 2Q second touch promotes to LRU...
+  2Q second touch promotes to LRU OK
+Testing 2Q LRU touch refreshes...
+  2Q LRU touch refreshes OK
+Testing 2Q eviction prefers FIFO...
+  2Q eviction prefers FIFO OK
+Testing 2Q evict with state...
+  2Q evict with state OK
+Testing 2Q remove...
+  2Q remove OK
+=== All Policy tests passed ===
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"policy_test" end time: Feb 03 16:54 GMT
+"policy_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/12 Testing: buffer_manager_test
+8/12 Test: buffer_manager_test
+Command: "/home/whe302/db/buzzdb/build/buffer_manager_test"
+Directory: /home/whe302/db/buzzdb/build
+"buffer_manager_test" start time: Feb 03 16:54 GMT
+Output:
+----------------------------------------------------------
+=== BufferManager Tests ===
+Testing fix single page...
+  Fix single page OK
+Testing persistence across restart...
+  Persistence across restart OK
+Testing FIFO eviction...
+  FIFO eviction OK
+Testing buffer full error...
+  Buffer full error OK
+Testing move to LRU on re-access...
+  Move to LRU on re-access OK
+Testing LRU refresh order...
+  LRU refresh order OK
+Testing multithread parallel fix...
+  Multithread parallel fix OK
+Testing multithread exclusive access...
+  Multithread exclusive access OK
+Testing multithread buffer full...
+  Multithread buffer full OK
+Testing multithread many pages...
+  Multithread many pages OK
+=== All BufferManager tests passed ===
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"buffer_manager_test" end time: Feb 03 16:54 GMT
+"buffer_manager_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/12 Testing: operator_test
+9/12 Test: operator_test
+Command: "/home/whe302/db/buzzdb/build/operator_test"
+Directory: /home/whe302/db/buzzdb/build
+"operator_test" start time: Feb 03 16:54 GMT
+Output:
+----------------------------------------------------------
+=== Operator Tests ===
+Testing scan on empty database...
+  Scan empty OK
+Testing scan all tuples...
+  Scan all OK
+Testing print operator...
+  Print OK
+Testing select with simple predicate...
+  Select simple OK
+Testing select with complex predicate...
+  Select complex OK
+Testing project operator...
+  Project OK
+Testing hash join operator...
+  Hash join OK
+Testing hash aggregation (SUM)...
+  Hash aggregation SUM OK
+Testing hash aggregation (COUNT)...
+  Hash aggregation COUNT OK
+Testing insert operator...
+  Insert OK
+=== All Operator tests passed ===
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"operator_test" end time: Feb 03 16:54 GMT
+"operator_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/12 Testing: query_parser_test
+10/12 Test: query_parser_test
+Command: "/home/whe302/db/buzzdb/build/query_parser_test"
+Directory: /home/whe302/db/buzzdb/build
+"query_parser_test" start time: Feb 03 16:54 GMT
+Output:
+----------------------------------------------------------
+=== Query Parser Tests ===
+Testing parse simple SELECT...
+  Parse simple SELECT OK
+Testing parse with WHERE...
+  Parse with WHERE OK
+Testing parse with JOIN...
+  Parse with JOIN OK
+Testing parse with aggregation...
+  Parse with aggregation OK
+Testing execute scan all STUDENTS...
+Results (6 rows):
+  [24002, Xenokrates, 24]
+  [26120, Fichte, 26]
+  [29555, Feuerbach, 29]
+  [28000, Schopenhauer, 46]
+  [24123, Platon, 50]
+  [25198, Aristoteles, 50]
+  Execute scan all STUDENTS OK
+Testing execute with WHERE...
+Query Components:
+  Relation: STUDENTS
+  Selected Attributes: 
+  WHERE: {3} > 25 AND < 50
+  Filtered students (25 < semester < 50):
+Results (3 rows):
+  [26120, Fichte, 26]
+  [29555, Feuerbach, 29]
+  [28000, Schopenhauer, 46]
+  Execute with WHERE OK
+Testing execute with JOIN...
+Query Components:
+  Relation: STUDENTS
+  Selected Attributes: 
+  JOIN: GRADES ON {1} = {1}
+  Joined results:
+Results (8 rows):
+  [24002, Xenokrates, 24, 24002, 5001, 1]
+  [24002, Xenokrates, 24, 24002, 5041, 2]
+  [26120, Fichte, 26, 26120, 5001, 2]
+  [26120, Fichte, 26, 26120, 5041, 3]
+  [29555, Feuerbach, 29, 29555, 5041, 2]
+  [28000, Schopenhauer, 46, 28000, 5022, 2]
+  [24123, Platon, 50, 24123, 5041, 1]
+  [25198, Aristoteles, 50, 25198, 5022, 1]
+  Execute with JOIN OK
+Testing execute SUM grades by student...
+Query Components:
+  Relation: GRADES
+  Selected Attributes: 
+  SUM: {3}
+  GROUP BY: {1}
+  Sum of grades by student:
+Results (6 rows):
+  [25198, 1]
+  [24123, 1]
+  [28000, 2]
+  [29555, 2]
+  [26120, 5]
+  [24002, 3]
+  Execute SUM grades OK
+=== All Query Parser tests passed ===
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"query_parser_test" end time: Feb 03 16:54 GMT
+"query_parser_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/12 Testing: sql_parser_test
+11/12 Test: sql_parser_test
+Command: "/home/whe302/db/buzzdb/build/sql_parser_test"
+Directory: /home/whe302/db/buzzdb/build
+"sql_parser_test" start time: Feb 03 16:54 GMT
+Output:
+----------------------------------------------------------
+=== SQL Parser Tests (New Implementation) ===
+Testing lexer simple tokens...
+  Lexer simple OK
+Testing lexer Lab 4 syntax...
+  Lexer Lab 4 syntax OK
+Testing lexer comparison operators...
+  Lexer comparisons OK
+Testing parse simple SELECT...
+  Parse simple SELECT OK
+Testing parse Lab 4 SELECT...
+  Parse Lab 4 SELECT OK
+Testing parse WHERE clause...
+  Parse WHERE clause OK
+Testing parse JOIN...
+  Parse JOIN OK
+Testing parse aggregation...
+  Parse aggregation OK
+Testing execute scan...
+Results (6 rows):
+  [24002, Xenokrates, 24]
+  [26120, Fichte, 26]
+  [29555, Feuerbach, 29]
+  [28000, Schopenhauer, 46]
+  [24123, Platon, 50]
+  [25198, Aristoteles, 50]
+  Execute scan OK
+Testing execute WHERE...
+Results (3 rows):
+  [26120, Fichte, 26]
+  [29555, Feuerbach, 29]
+  [28000, Schopenhauer, 46]
+  Execute WHERE OK
+Testing execute JOIN...
+Results (8 rows):
+  [24002, Xenokrates, 24, 24002, 5001, 1]
+  [24002, Xenokrates, 24, 24002, 5041, 2]
+  [26120, Fichte, 26, 26120, 5001, 2]
+  [26120, Fichte, 26, 26120, 5041, 3]
+  [29555, Feuerbach, 29, 29555, 5041, 2]
+  [28000, Schopenhauer, 46, 28000, 5022, 2]
+  [24123, Platon, 50, 24123, 5041, 1]
+  [25198, Aristoteles, 50, 25198, 5022, 1]
+  Execute JOIN OK
+Testing execute aggregation...
+Results (6 rows):
+  [25198, 1]
+  [24123, 1]
+  [28000, 2]
+  [29555, 2]
+  [26120, 5]
+  [24002, 3]
+  Execute aggregation OK
+=== All SQL Parser tests passed ===
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"sql_parser_test" end time: Feb 03 16:54 GMT
+"sql_parser_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/12 Testing: integration_test
+12/12 Test: integration_test
+Command: "/home/whe302/db/buzzdb/build/integration_test"
+Directory: /home/whe302/db/buzzdb/build
+"integration_test" start time: Feb 03 16:54 GMT
+Output:
+----------------------------------------------------------
+=== BuzzDB Integration Tests ===
+Testing system limits and documenting capabilities
+
+
+============================================================
+TEST: Large Table Scan
+============================================================
+Inserting 10,000 rows and scanning...
+  Inserted 10,000 rows in 8418ms
+  Scanned 10000 rows in 26ms
+  PASSED
+
+============================================================
+TEST: Large Join
+============================================================
+Joining two tables with 1000 rows each...
+  Join produced 1000 rows in 7ms
+  PASSED
+
+============================================================
+TEST: Aggregation with Many Groups
+============================================================
+Aggregating 10,000 rows into 100 groups...
+  Produced 100 groups
+  PASSED
+
+============================================================
+TEST: Empty Table Scan
+============================================================
+  Scanned empty table, got 0 rows
+  PASSED
+
+============================================================
+TEST: WHERE with No Matches
+============================================================
+  Query with impossible condition returned 0 rows
+  PASSED
+
+============================================================
+TEST: JOIN with No Matches
+============================================================
+  Join with no matching keys returned 0 rows
+  PASSED
+
+============================================================
+TEST: Single Row Table
+============================================================
+  Single row operations work correctly
+  PASSED
+
+============================================================
+LIMITATION: String Comparison in WHERE
+============================================================
+String comparisons are NOT supported in WHERE clauses
+  Cannot query: WHERE name = 'Alice'
+  Workaround: Use integer IDs for filtering
+  DOCUMENTED
+
+============================================================
+LIMITATION: Multiple Joins
+============================================================
+Only single JOIN is supported per query
+  Cannot query: FROM A JOIN B ON ... JOIN C ON ...
+  Workaround: Execute multiple queries and join in application
+  DOCUMENTED
+
+============================================================
+LIMITATION: No UPDATE/DELETE
+============================================================
+UPDATE and DELETE statements are not supported
+  Cannot: UPDATE users SET age = 30 WHERE id = 1
+  Cannot: DELETE FROM users WHERE id = 1
+  Workaround: None - data is append-only
+  DOCUMENTED
+
+============================================================
+LIMITATION: No Transactions
+============================================================
+No BEGIN/COMMIT/ROLLBACK support
+  Inserted 2 rows - cannot rollback, count = 2
+  DOCUMENTED
+
+============================================================
+TEST: Concurrent Reads
+============================================================
+Multiple threads reading simultaneously...
+  40 successful reads, 0 errors
+  PASSED (with caveats)
+
+============================================================
+TEST: Concurrent Read/Write
+============================================================
+One writer, multiple readers - testing for dirty reads...
+  Final row count: 200
+  Max seen by readers during writes: 200
+  Errors: 0
+  Concurrent R/W completed without crashes
+  PASSED
+
+============================================================
+TEST: Basic Durability
+============================================================
+Data persists across BufferManager restart...
+  After restart, found 100 rows
+  PASSED
+
+============================================================
+LIMITATION: No Crash Recovery
+============================================================
+If process crashes mid-operation, data may be lost/corrupted
+  - No write-ahead logging (WAL)
+  - Dirty pages only flushed on eviction or clean shutdown
+  - kill -9 during insert = potential data loss
+  - No REDO/UNDO recovery
+  DOCUMENTED
+
+============================================================
+TEST: Mixed Types in Tuples
+============================================================
+Tuples with both int and string fields...
+  Inserted 2 tuples with DIFFERENT schemas - both accepted!
+  This is a CONSISTENCY issue - no schema enforcement
+  PASSED (but demonstrates lack of schema enforcement)
+
+============================================================
+ACID COMPLIANCE SUMMARY
+============================================================
+
+ATOMICITY:    [NOT SUPPORTED]
+              - No transactions
+              - No rollback capability
+              - Partial failures leave inconsistent state
+
+CONSISTENCY:  [MINIMAL]
+              - No schema catalog
+              - No constraints (PK, FK, NOT NULL, CHECK)
+              - Any tuple structure accepted
+              - Type checking only at Field level
+
+ISOLATION:    [READ UNCOMMITTED]
+              - Page-level locks only
+              - Dirty reads possible
+              - No MVCC or snapshot isolation
+              - No transaction boundaries
+
+DURABILITY:   [PARTIAL]
+              - Data flushed on clean shutdown
+              - NO write-ahead logging
+              - NO crash recovery
+              - Data loss possible on crash
+
+OVERALL: This is an EDUCATIONAL database that demonstrates core concepts
+         but is NOT suitable for production use where ACID is required.
+
+
+=== All Integration Tests Completed ===
+<end of output>
+Test time =  16.97 sec
+----------------------------------------------------------
+Test Passed.
+"integration_test" end time: Feb 03 16:54 GMT
+"integration_test" time elapsed: 00:00:16
+----------------------------------------------------------
+
+End testing: Feb 03 16:54 GMT

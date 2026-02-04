@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/sql_parser_test.dir/tests/sql_parser_test.cpp.o -o sql_parser_test 

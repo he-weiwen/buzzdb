@@ -1,0 +1,15 @@
+/home/whe302/db/buzzdb/build/CMakeFiles/common_test.dir
+/home/whe302/db/buzzdb/build/CMakeFiles/field_test.dir
+/home/whe302/db/buzzdb/build/CMakeFiles/tuple_test.dir
+/home/whe302/db/buzzdb/build/CMakeFiles/field_variant_test.dir
+/home/whe302/db/buzzdb/build/CMakeFiles/slotted_page_test.dir
+/home/whe302/db/buzzdb/build/CMakeFiles/storage_manager_test.dir
+/home/whe302/db/buzzdb/build/CMakeFiles/policy_test.dir
+/home/whe302/db/buzzdb/build/CMakeFiles/buffer_manager_test.dir
+/home/whe302/db/buzzdb/build/CMakeFiles/operator_test.dir
+/home/whe302/db/buzzdb/build/CMakeFiles/query_parser_test.dir
+/home/whe302/db/buzzdb/build/CMakeFiles/sql_parser_test.dir
+/home/whe302/db/buzzdb/build/CMakeFiles/integration_test.dir
+/home/whe302/db/buzzdb/build/CMakeFiles/test.dir
+/home/whe302/db/buzzdb/build/CMakeFiles/edit_cache.dir
+/home/whe302/db/buzzdb/build/CMakeFiles/rebuild_cache.dir

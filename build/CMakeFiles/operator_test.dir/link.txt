@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/operator_test.dir/tests/operator_test.cpp.o -o operator_test 

@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/query_parser_test.dir/tests/query_parser_test.cpp.o -o query_parser_test 
